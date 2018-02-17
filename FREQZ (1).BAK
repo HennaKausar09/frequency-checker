@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+void main()
+{       int i,j,b,t,l,v,m[5],n=5;
+	char a[100],c[5][100],d[100];
+	clrscr();
+	for(i=0;i<80;i++)
+	{	printf("-");
+	}
+	printf("\nPROGRAM TO ANALYSE THE DAY TO DAY USAGE OF A WEB APPLICATION AND SORT THEM BASED       ON THE FREQUENCY OF VISITS BY USERS AND UPDATE IT FOR THE NEXT DAY\n");
+	for(i=0;i<80;i++)
+	{	printf("-");
+	}
+	printf("\nENTER THE WEBSITE:");
+	scanf("%s",&a);
+	printf("\nENTER THE INNER FIELDS OF THE WEBSITE:\n");
+	for(i=0;i<n;i++)
+	{	scanf("%s",&c[i]);
+	}
+	printf("\nENTER INTO THE WEBSITE BY ENTERING A VALUE GREATER THAN 0:");
+	scanf("%d",&t);
+	for(v=0;v<n;v++)
+	{   m[v]=0;
+	}
+	while(t!=0)
+	{ 	printf("\nEnter 1 or 2 or 3 or 4 or 5 to enter into any field and 6 to exit:");
+		scanf("%d",&l);
+		switch(l)
+		{	case 1:{m[0]++;}break;
+			case 2:{m[1]++;}break;
+			case 3:{m[2]++;}break;
+			case 4:{m[3]++;}break;
+			case 5:{m[4]++;}break;
+			default:{t=0;}break;
+		}
+	}
+
+	for(i=0;i<n-1;i++)
+	{	for(j=0;j<n-i-1;j++)
+		{	if(m[j]<m[j+1])
+			{ 	int r=m[j];
+				    m[j]=m[j+1];
+				    m[j+1]=r;
+				strcpy(d,c[j]);
+				strcpy(c[j],c[j+1]);
+				strcpy(c[j+1],d);
+			}
+		}
+	}
+	printf("\n\nThe sorting of the fields based on the number of visits is as follows:\n");
+	for(i=0;i<n;i++)
+	{	printf("%s",c[i]);
+		printf("\n");
+	}
+
+	getch();
+}
